@@ -1,12 +1,14 @@
-import { Outlet } from 'react-router-dom';
+import { Navigate, Outlet } from "react-router-dom";
+const chuj = true;
 
 function Root() {
-	return (
-		<>
-			<h1>test</h1>
-			<Outlet />
-		</>
-	);
+  return (
+    <>
+      {chuj ? <Navigate to="/login" /> : <h1>ok</h1>}
+      <h1>chuj</h1>
+      <Outlet />
+    </>
+  );
 }
 
 export default Root;
