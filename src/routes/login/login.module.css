@@ -1,0 +1,11 @@
+.div {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 5px;
+}
+.div div {
+	display: flex;
+}

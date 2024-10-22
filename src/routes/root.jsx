@@ -1,14 +1,20 @@
-import { Navigate, Outlet } from "react-router-dom";
-const chuj = true;
+import { useEffect } from 'react';
+import { Outlet } from 'react-router-dom';
+import MiniDrawer from '../components/navbar/navbar';
+import { useAuth } from '../hooks/hooks';
 
 function Root() {
-  return (
-    <>
-      {chuj ? <Navigate to="/login" /> : <h1>ok</h1>}
-      <h1>chuj</h1>
-      <Outlet />
-    </>
-  );
+	const { user, handleSignInWithEmailLink } = useAuth();
+	useEffect(() => {
+		if (!user) handleSignInWithEmailLink();
+	}, [handleSignInWithEmailLink, user]);
+
+	return (
+		<div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100vw', height: '100vh' }}>
+			<MiniDrawer />
+			<Outlet />
+		</div>
+	);
 }
 
 export default Root;
